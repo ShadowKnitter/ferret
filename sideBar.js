@@ -14,7 +14,7 @@ $(document).ready(function () {
         displayedData[i][2]=data[i].extracted_old_price;
         displayedData[i][3]=data[i].thumbnail;
         displayedData[i][4]=data[i].rating;
-
+        
     }
 
     var itemName = displayedData[0][0];
@@ -41,8 +41,10 @@ $(document).ready(function () {
         window.open(url, '_blank');
     });
     $("#price").text(price.toFixed(2));
-    $("#oldPrice").text(oldPrice.toFixed(2));
-    $("#percentOff").text(100-(oldPrice/price).toFixed(0));
+    if(oldPrice > price){
+        $("#oldPrice").text("$" + oldPrice.toFixed(2));
+        $("#percentOff").text("ㅤㅤ"+(100-(oldPrice/price).toFixed(0)) + "% Off!");
+    }
 
     $("#rating").text(rating);
     $("#ratingBar").attr("aria-valuenow", rating);
