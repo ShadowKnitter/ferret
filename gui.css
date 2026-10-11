@@ -8,33 +8,56 @@ body{
     background-attachment: fixed;
 }
 
+
 .title{
-    font-size: 8dvh;
+    font-size: clamp(1.5rem, 3vw + 1rem, 5rem);
+}
+.sideBarContent{
+  font-size: clamp(1.5rem, 1vw + 1rem, 3rem);
+}
+.sideBarRadio{
+   font-size: clamp(1.0rem, 1vw + 0.5rem, 3rem);
+}
+.item{
+    height: 90dvh;
+    margin-top: 0dvh;
+    margin-bottom: 1dvh;
+    margin-left: 1dvh;
+    margin-right: 1dvh;
 }
 .itemTitle{
-    font-size: 6dvh;
+    /* clamp(MIN, VAL, MAX) */
+    font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
 }
-.small{
-    font-size: 4dvh;
+.itemPrice{
+    /* font-size: 6dvh; */
+    font-size: clamp(1.5rem, 2vw + 1rem, 4rem);
 }
-.tiny{
-    font-size: 2dvh;
+.itemSale{
+    font-size: clamp(1rem, 1vw + 0.5rem, 4rem);
 }
+.itemRating{
+    font-size: clamp(1.5rem, 2vw + 1rem, 4rem);
+}
+.itemRatingLabel{
+    font-size: clamp(1rem, 1vw + 0.5rem, 4rem);
+}
+
 .card {
-    background-color: rgba(0, 0, 0, 0.75); 
+    background-color: rgba(0, 0, 0, 0.75);
     border: 10px solid black;
-    border-radius: 20px; 
+    border-radius: 20px;
 }
 .search{
-    background-color: rgba(0, 0, 0, 0.75); 
+    background-color: rgba(0, 0, 0, 0.75);
     border: 10px solid black;
-    border-radius: 5dvh; 
+    border-radius: 5dvh;
     height: 5dvh;
 }
 .centered{
     text-align: center;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 .iconBtn{
@@ -45,13 +68,32 @@ body{
     margin: 0px 2dvw;
 }
 
-#price{
-    font-size: 6dvh;
-}
 #sideBarSpacing{
     padding: 2dvh 0px;
 }
 #settingsBtn{
     height:10dvh;
     width: 10dvh;
+}
+
+.scrollbarMargin {
+    margin-right: 3dvh;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 2dvh;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: black;
+    border-radius: 2dvh;
+    margin: 0px, 1dvh;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: white;
+    overflow: visible;
+    width: 3dvh;
+    border-radius: 2dvh;
+    border: 3px solid #e9ecef;
 }

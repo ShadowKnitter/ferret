@@ -1,4 +1,4 @@
-var data = [
+var testData = [
   {
       "position": 1,
       "title": "13-inch Apple MacBook Air M5",
@@ -11,7 +11,8 @@ var data = [
       "source_icon": "https://serpapi.com/searches/6ac6b908f73581cf6d050ed6/images/OsJrghdiqNP4eRkKNTHWNuUqXelqZV1T8Kwc8L8qjME.png",
       "multiple_sources": true,
       "price": "$1,299.00",
-      "extracted_price": 1299.0,
+      "extracted_price": 12960.0,
+        "extracted_old_price": 12990.0,
       "rating": 4.9,
       "reviews": 3800,
       "snippet": "Performs well (869 user reviews)",

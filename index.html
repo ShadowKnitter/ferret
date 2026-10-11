@@ -24,30 +24,30 @@
               <div class="row">
                 <div class="col-sm-6">
                   <button id="cartBtn" type="button" class="btn btn-primary iconBtn" style="padding: 1dvh 0px;">
-                    <img src="img/Cart.png" alt="Cart" class="align-middle" style="height: 18dvh; width: 18dvh;">
+                    <img src="img/Cart.png" alt="Cart" class="align-middle" style="width: 80%;">
                   </button>
                 </div>
                 <div class="col-sm-6">
-                    <h2 id="sideBarSpacing" class="small"><span id="items"></span></h2>
-                    <h2 id="sideBarSpacing" class="small">$<span id="fCost"></span></h2>
+                    <h2 id="sideBarSpacing" class="sideBarContent"><span id="items"></span></h2>
                 </div>
+                <h2 id="sideBarSpacing" class="sideBarContent centered">$<span id="fCost"></span></h2>
               </div>
             </div>
 
             <div class="bs-component" style="height: 33dvh">
               <h1 class="title centered">Sort</h1>
-              <fieldset class="fs-5">
+              <fieldset class="fs-5" id="resultSorts">
                 <div class="form-check centered">
-                  <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                  <label class="form-check-label" for="optionsRadios1">ㅤRating</label>
+                  <input class="form-check-input" type="radio" name="optionsRadios" id="ratingSort" value="ratingSort" checked="">
+                  <label class="form-check-label sideBarRadio" for="ratingSort">ㅤRating</label>
                 </div>
                 <div class="form-check centered">
-                  <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  <label class="form-check-label" for="optionsRadios2">ㅤPrice</label>
+                  <input class="form-check-input" type="radio" name="optionsRadios" id="priceSort" value="priceSort">
+                  <label class="form-check-label sideBarRadio" for="priceSort">ㅤPrice</label>
                 </div>
                 <div class="form-check centered">
-                  <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                  <label class="form-check-label" for="optionsRadios3">ㅤOn Sale</label>
+                  <input class="form-check-input" type="radio" name="optionsRadios" id="saleSort" value="saleSort">
+                  <label class="form-check-label sideBarRadio" for="saleSort">ㅤOn Sale</label>
                 </div>
               </fieldset>
             </div>
@@ -56,7 +56,7 @@
               <h1 class="title centered">Wishlist</h1>
               <div class="bs-component centered">
                 <button id="wishlistBtn" type="button" class="btn btn-primary iconBtn" >
-                  <img src="img/Wishlist.png" alt="Wishlist" class="align-middle centered" style="height: 20dvh; width: 20dvh;">
+                  <img src="img/Wishlist.png" alt="Wishlist" class="align-middle centered" style="width: 80%;">
                 </button>
               </div>
             </div>
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Search -->
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         <div class="bs-component">
 
           <!-- Search Bar -->
@@ -79,66 +79,12 @@
           </div>
 
           <!-- Results -->
-          <div class="overflow-y-auto" style="height: 91dvh; scrollbar-width: none; overflow-x: clip;">
-            <div class="bs-docs-section">
-              <div class="row">
-
-                <!-- item 1 -->
-                <div class="col-sm-4" style="padding-bottom: 3dvh">
-                  <div class="card" style="height: 90dvh">
-
-
-                    
-                    <h1 class="itemTitle centered"><span id="itemName"></span></h1>
-                    <button class="btn btn-primary iconBtn centered" type="button" id="linkBtn" style="padding: 0px 0px;">
-                      <img id="image" alt="image failed to load" class="align-middle" style="height: 25dvh; width: 25dvh;">
-                    </button>
-                    <h1 class="centered" style="margin: 0px;">$<span id="price"></span></h1>
-                    <h3 class="tiny centered" style="margin: 0px;"><s><span id="oldPrice"></span></s><span id="percentOff"></span></h3>
-                    <h2 class="small centered" style="padding-top: 3dvh;">Rating</h2>
-                    <h3 class="tiny centered"><span id="rating"></span>/5</h3>
-                    <div class="progress">
-                      <div id="ratingBar" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="height: 2dvh; width: 1%;" aria-valuemin="0" aria-valuemax="5"></div>
-                    </div>
-                    <div class="bs-component centered" style="padding: 3dvh 0px;">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <button class="btn btn-primary iconBtn centered" type="button" id="addToCartBtn" style="padding: 0px 0px;">
-                            <img src="img/CartBtn.png" alt="Add to Cart" class="align-middle centered" style="height: 10dvh; width: 10dvh;">
-                          </button>
-                        </div>
-                        <div class="col-sm-6">
-                          <button class="btn btn-primary iconBtn centered" type="button" id="addToWishlistBtn" style="padding: 0px 0px;">
-                            <img src="img/WishlistBtn.png" alt="Add to Wishlist" class="align-middle centered" style="height: 10dvh; width: 10dvh;">
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-4" style="padding-bottom: 3dvh">
-                  <div class="card" style="height: 90dvh">
-                  </div>
-                </div>
-
-                <div class="col-sm-4" style="padding-bottom: 3dvh">
-                  <div class="card" style="height: 90dvh"> 
-                  </div>
-                </div>
-
+          <div class="overflow-y-auto custom-scrollbar scrollbarMargin" style="height: 91dvh; overflow-x: clip;">
+            <div class="bs-docs-section scrollbarMargin">
+              <div class="row" id="results">
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Settings -->
-      <div class="col-sm-1" style="padding: 1vh">
-        <div class="bs-component">
-          <button type="button" id="settingsBtn" class="btn btn-primary iconBtn" style="padding: 0px 0px;">
-            <img src="img/Settings.png" alt="Settings" class="align-middle" style="height: 10dvh; width: 10dvh;">
-          </button>
         </div>
       </div>
     </div>
@@ -151,7 +97,6 @@
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"
     integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
   <script src="./shopping.js"></script>
-  <script src="./sideBar.js"></script>
   <script src="./testSearch.js"></script>
 </body>
 

@@ -37,15 +37,15 @@ async def read_index():
 @app.get("/index.html")
 async def read_index():
     return FileResponse('index.html')
+@app.get("/item.html")
+async def read_index():
+    return FileResponse('item.html')
 @app.get("/gui.css")
 async def read_index():
     return FileResponse('gui.css')
 @app.get("/shopping.js")
 async def read_index():
     return FileResponse('shopping.js')
-@app.get("/sideBar.js")
-async def read_index():
-    return FileResponse('sideBar.js')
 
 # temporary search results
 @app.get("/testSearch.js")
