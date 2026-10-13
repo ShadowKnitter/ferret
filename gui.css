@@ -27,7 +27,7 @@ body{
 }
 .itemTitle{
     /* clamp(MIN, VAL, MAX) */
-    font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
+    font-size: clamp(0.5rem, 1vw + 1rem, 4rem);
 }
 .itemPrice{
     /* font-size: 6dvh; */

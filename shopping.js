@@ -5,16 +5,16 @@ var wishlist = [];
 $("#searchBtn").on("click", function () {
     var searchRequest = $("#searchBar")[0].value;
     console.log(searchRequest);
-    // $.getJSON('./api/search/' + searchRequest, function (result) {
-    //     console.log('Data received:', result);
-    //     data = result;
-    //     loadContent('search');
-    // }).fail(function (jqXHR, textStatus, errorThrown) {
-    //     console.error('Request failed:', textStatus, errorThrown);
-    // });
+    $.getJSON('./api/search/' + searchRequest, function (result) {
+        console.log('Data received:', result);
+        data = result;
+        loadContent('search');
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error('Request failed:', textStatus, errorThrown);
+    });
 
-    data = testData;
-    loadContent('search');
+    // data = testData;
+    // loadContent('search');
 });
 
 function loadContent(contentType) {
@@ -67,7 +67,12 @@ function loadItem(displayedData, contentType) {
         ItemHTML.find("#linkBtn").on("click", function () {
             window.open(url, '_blank');
         });
-        ItemHTML.find("#price").text(price.toFixed(2));
+        if (displayedData.installment != null){
+            ItemHTML.find("#price").text(displayedData.installment.price);
+        }
+        else{
+            ItemHTML.find("#price").text("$"+price.toFixed(2));
+        }
         if (oldPrice > price) {
             ItemHTML.find("#oldPrice").text("$" + oldPrice.toFixed(2));
             ItemHTML.find("#percentOff").text("ㅤ" + (percentOff).toFixed(2) + "% Off!");
