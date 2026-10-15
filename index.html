@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping App</title>
-  <link rel="icon" type="image/x-icon" href="/Ferret.png">
+  <title>Ferret</title>
+  <!-- <link rel="icon" type="image/x-icon" href="/Ferret.png"> -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.8/dist/darkly/bootstrap.min.css" rel="stylesheet">
   <link href="./gui.css" rel="stylesheet">
@@ -25,13 +25,19 @@
               <div class="row">
                 <div class="col-sm-6">
                   <button id="cartBtn" type="button" class="btn btn-primary iconBtn" style="padding: 1dvh 0px;">
-                    <img src="img/Cart.png" alt="Cart" class="align-middle" style="width: 80%;">
+                    <img id="cartImg" src="img/Cart.png" alt="Cart" class="align-middle" style="width: 80%;">
                   </button>
                 </div>
                 <div class="col-sm-6">
                     <h2 id="sideBarSpacing" class="sideBarContent"><span id="items"></span></h2>
                 </div>
                 <h2 id="sideBarSpacing" class="sideBarContent centered">$<span id="fCost"></span></h2>
+              </div>
+            </div>
+            <div class="container-fluid" style="padding-top: 2dvh">
+              <div class="input-group mb-3">
+                <input type="text" id="budgetBar" class="form-control search" placeholder="Edit Budget (Ex: +100)" aria-label="Budget Bar" aria-describedby="button-addon2">
+                <button class="btn btn-primary search centered" type="button" id="budgetBarBtn">Effect</button>
               </div>
             </div>
 

@@ -63,7 +63,7 @@ function loadItem(displayedData, contentType) {
 
         ItemHTML.find('#itemName').text(itemName);
         ItemHTML.find("#image").attr("src", image);
-        ItemHTML.find("#url").attr("url", url);
+        // ItemHTML.find("#url").attr("url", url);
         ItemHTML.find("#linkBtn").on("click", function () {
             window.open(url, '_blank');
         });
@@ -93,6 +93,7 @@ function loadItem(displayedData, contentType) {
         case 'cart':
             ItemHTML.find("#cartBtnImg").attr('src', 'img/RmvCartBtn.png');
             ItemHTML.find("#wishlistBtnImg").attr('src', 'img/WishlistBtn.png');
+            $("#cartImg").attr('src', 'img/Checkout.png');
 
             ItemHTML.find("#addToCartBtn").on("click", function () {
                 cart = cart.filter(record => record.id !== displayedData.id);
@@ -110,6 +111,7 @@ function loadItem(displayedData, contentType) {
         case 'wishlist':
             ItemHTML.find("#cartBtnImg").attr('src', 'img/CartBtn.png');
             ItemHTML.find("#wishlistBtnImg").attr('src', 'img/RmvWishlistBtn.png');
+            $("#cartImg").attr('src', 'img/Cart.png');
 
             ItemHTML.find("#addToCartBtn").on("click", function () {
                 const dataCopy = structuredClone(displayedData);
@@ -127,6 +129,7 @@ function loadItem(displayedData, contentType) {
         default:
             ItemHTML.find("#cartBtnImg").attr('src', 'img/CartBtn.png');
             ItemHTML.find("#wishlistBtnImg").attr('src', 'img/WishlistBtn.png');
+            $("#cartImg").attr('src', 'img/Cart.png');
 
             ItemHTML.find("#addToCartBtn").on("click", function () {
                 const dataCopy = structuredClone(displayedData);
@@ -149,11 +152,17 @@ function loadItem(displayedData, contentType) {
 
 function updateCart() {
     var totalPrice = 0;
-    $('#items').text(cart.length);
     for (var i = 0; i < cart.length; i++) {
         totalPrice += cart[i].extracted_price;
     }
-    $("#fCost").text(totalPrice.toFixed(2));
+    if (totalPrice > budget){
+        alert("Item does not fit in your budget. Add it to your wishlist to find it easily when you have enough!");
+        cart.pop();
+    }
+    else{
+        $('#items').text(cart.length);
+        $("#fCost").text(totalPrice.toFixed(2));
+    }
 }
 
 function sortByRating(contentType) {
@@ -180,7 +189,7 @@ function sortBySale(contentType) {
 
 
 // Side Bar Code
-var budget = 284.01;
+var budget = 0;
 var fCost = 0;
 $("#budget").text(budget.toFixed(2));
 $("#items").text(cart.length);
@@ -191,11 +200,33 @@ $("#wishlistBtn").on("click", function () {
     data = wishlist;
     loadContent('wishlist');
 });
-$("#cartBtn").on("click", function () {
-    data = cart;
-    loadContent('cart');
-});
 
+$("#budgetBarBtn").on("click", function () {
+    budget += parseFloat($("#budgetBar")[0].value);
+    $("#budget").text((budget).toFixed(2));
+    localStorage.setItem('budget', JSON.stringify(budget));
+});
+$("#cartBtn").on("click", function () {
+    if($("#cartImg").attr('src') == "img/Cart.png"){
+        data = cart;
+        loadContent('cart');
+    }
+    else{
+        var totalPrice = 0;
+        for (var i = 0; i < cart.length; i++) {
+            totalPrice += cart[i].extracted_price;
+        }
+        if(confirm("Would you like to buy all these items for $"+totalPrice)){
+            budget-=totalPrice;
+            $("#budget").text((budget).toFixed(2));
+            localStorage.setItem('budget', JSON.stringify(budget));
+            cart.length = [0];
+            updateCart();
+            data=cart;
+            loadContent('cart');
+        }
+    }
+});
 
 $("#ratingSort").on("click", function () {
     console.log("Rating Sort");
@@ -212,10 +243,18 @@ $("#saleSort").on("click", function () {
 
 // ON PAGE LOAD
 $(document).ready(function () {
-    const savedData = localStorage.getItem('wishlist');
-    if (savedData != null){
-        wishlist = JSON.parse(savedData);
+    const savedWishlist = localStorage.getItem('wishlist');
+    const savedBudget = localStorage.getItem('budget');
+    if (savedWishlist != null){
+        wishlist = JSON.parse(savedWishlist);
         data = wishlist;
         loadContent('wishlist');
+    }
+    if (savedBudget != null){
+        budget = JSON.parse(savedBudget);
+        $("#budget").text((budget).toFixed(2));
+    }
+    if (savedBudget == null && savedWishlist == null){
+        alert("Welcome to Ferret! Search at the top to get started, and check around the menus by pressing any graphical icon on screen!");
     }
 });
