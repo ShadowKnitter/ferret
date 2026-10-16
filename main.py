@@ -31,6 +31,12 @@ app = FastAPI()
 app.mount("/img", StaticFiles(directory="img"), name="img")
 
 # SETUP HTML FILES
+@app.get("/Pufino - Whistle (freetouse.com).mp3")
+async def read_index():
+    return FileResponse('Pufino - Whistle (freetouse.com).mp3')
+@app.get("/Mouse.mp3")
+async def read_index():
+    return FileResponse('Mouse.mp3')
 @app.get("/")
 async def read_index():
     return FileResponse('index.html')

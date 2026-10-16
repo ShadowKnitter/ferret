@@ -243,6 +243,21 @@ $("#saleSort").on("click", function () {
 
 // ON PAGE LOAD
 $(document).ready(function () {
+    console.log("Credit to Serp API and Freetouse.com for the search functionality and music respectivly.");
+
+    var music = $('#bg-music')[0];
+    $(document).one('click', function() {
+        music.play();
+    });
+
+    const clickSound = new Audio('Mouse.mp3'); 
+    $(document).on('click', function() {
+        clickSound.currentTime = 0;    
+        clickSound.play().catch(function(error) {
+            console.log("Playback blocked until user interacts with the page:", error);
+        });
+    });
+
     const savedWishlist = localStorage.getItem('wishlist');
     const savedBudget = localStorage.getItem('budget');
     if (savedWishlist != null){
